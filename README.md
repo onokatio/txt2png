@@ -16,6 +16,6 @@ You can get <filename>.png in current directory.
 $ git clone https://github.com/onokatio/txt2png
 $ cd txt2png
 $ chmod +x ./txt2png
-$ ./img2png ~/COJT/hoge/imagedata.txt 640 480
+$ ./txt2png ~/COJT/hoge/imagedata.txt 640 480
 ```
 
