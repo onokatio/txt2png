@@ -19,10 +19,16 @@ $ sudo apt-get install ffmpeg xxd
 ### ArchLinux
 
 ```
-$ sudo pacman -S ffmpeg xxd
+$ sudo pacman -S ffmpeg vim
 ```
 
 xxd is developing by vim project. and vim package has xxd.
+
+### Mac homebrew
+
+```
+$ brew install ffmpeg vim
+```
 
 ## Usage
 
