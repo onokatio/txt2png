@@ -6,7 +6,8 @@ This command convert txt file to png.
 
 You have to install these package to run txt2png.
 
-- ffmpeg
+- Bash
+- FFmpeg
 - xxd
 
 ### Ubuntu
