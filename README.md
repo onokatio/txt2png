@@ -36,7 +36,7 @@ $ brew install ffmpeg vim
 txt2png <filename> <width> <height>
 ```
 
-You can get <filename>.png in current directory.
+You can get `<filename>.png` in current directory.
 
 ## Example
 
