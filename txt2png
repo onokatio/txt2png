@@ -23,15 +23,15 @@ if [ -z $3 ];then
 fi
 
 # convert text hex file to rgb24 binary.
-grep -v vsync $1 | head -n $((640*480))| xxd -r -ps > /tmp/a.raw
+grep -v vsync $1 | head -n $(($2*$3))| xxd -r -ps > /tmp/a.raw
 
-size=`wc -c /tmp/a.raw | cut -d ' ' -f 1`
-if [ $(($2*$3*3)) != $size ];then
-	echo "Error:  $2x$3 image size is usually $(($2*$3*3)) bytes ($2 * $3 * 3 byte)."
-	echo "Error:  But your text file has $size bytes."
-	echo "Error:  so maybe you select invalid size or your txt file is invalid."
-	exit
-fi
+#size=`wc -c /tmp/a.raw | cut -d ' ' -f 1`
+#if [ $(($2*$3*3)) != $size ];then
+#	echo "Error:  $2x$3 image size is usually $(($2*$3*3)) bytes ($2 * $3 * 3 byte)."
+#	echo "Error:  But your text file has $size bytes."
+#	echo "Error:  so maybe you select invalid size or your txt file is invalid."
+#	exit
+#fi
 
 # convert rgb24 binary to png.
 ffmpeg -y -loglevel error -vcodec rawvideo -f rawvideo -pix_fmt rgb24 -s $2x$3 -i /tmp/a.raw -f image2 -vcodec png $1.png
