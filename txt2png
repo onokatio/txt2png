@@ -1,29 +1,40 @@
 #!/bin/bash
 
 function show-help(){
-	echo "Usage: txt2png <filename> <width> <height>"
+	echo "Usage: txt2png <filename> <width> <height> [page]"
 }
 
-if [ -z $1 ];then
+if [ -z "$1" ];then
 	echo "Error: filename is empty."
 	show-help
 	exit
 fi
 
-if [ -z $2 ];then
+if [ -z "$2" ];then
 	echo "Error: width is empty."
 	show-help
 	exit
 fi
 
-if [ -z $3 ];then
+if [ -z "$3" ];then
 	echo "Error: height is empty."
 	show-help
 	exit
 fi
 
+if [ -z "$4" ];then
+	echo "page=1"
+	page=1
+else
+	echo "page=$4"
+	page="$4"	
+fi
+
+from=$(( ($page - 1) * $2*$3 + 1))
+echo $from
+
 # convert text hex file to rgb24 binary.
-grep -v vsync $1 | head -n $(($2*$3))| xxd -r -ps > /tmp/a.raw
+grep -v vsync $1 | tail -n +$from | head -n $(($2*$3))| xxd -r -ps > /tmp/a.raw
 
 #size=`wc -c /tmp/a.raw | cut -d ' ' -f 1`
 #if [ $(($2*$3*3)) != $size ];then
